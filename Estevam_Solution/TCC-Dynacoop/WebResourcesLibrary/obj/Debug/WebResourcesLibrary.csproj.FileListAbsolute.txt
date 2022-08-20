@@ -1,0 +1,6 @@
+C:\Estevam Amorim\Trabalho\Processo Seletivo Dynacoop\Projects\TCC-Dynacoop\WebResourcesLibrary\bin\Debug\WebResourcesLibrary.dll
+C:\Estevam Amorim\Trabalho\Processo Seletivo Dynacoop\Projects\TCC-Dynacoop\WebResourcesLibrary\bin\Debug\WebResourcesLibrary.pdb
+C:\Estevam Amorim\Trabalho\Processo Seletivo Dynacoop\Projects\TCC-Dynacoop\WebResourcesLibrary\obj\Debug\WebResourcesLibrary.csproj.AssemblyReference.cache
+C:\Estevam Amorim\Trabalho\Processo Seletivo Dynacoop\Projects\TCC-Dynacoop\WebResourcesLibrary\obj\Debug\WebResourcesLibrary.csproj.CoreCompileInputs.cache
+C:\Estevam Amorim\Trabalho\Processo Seletivo Dynacoop\Projects\TCC-Dynacoop\WebResourcesLibrary\obj\Debug\WebResourcesLibrary.dll
+C:\Estevam Amorim\Trabalho\Processo Seletivo Dynacoop\Projects\TCC-Dynacoop\WebResourcesLibrary\obj\Debug\WebResourcesLibrary.pdb
