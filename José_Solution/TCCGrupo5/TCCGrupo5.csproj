@@ -33,6 +33,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Grupo5.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
@@ -140,17 +146,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\ActionImplement.cs" />
-    <Compile Include="Actions\InformacoesDoCep.cs" />
-    <Compile Include="Actions\RecuperandoCepDoFormulario.cs" />
+    <Compile Include="Actions\CEP.cs" />
+    <Compile Include="Actions\ContactCEPManager.cs" />
     <Compile Include="Connections\ConnectionFactory.cs" />
-    <Compile Include="Plugins\IntegrandoTabelaDeProdutos.cs" />
+    <Compile Include="Plugins\ProductService.cs" />
     <Compile Include="Plugins\PluginImplement.cs" />
-    <Compile Include="Plugins\RecuperarRegistroDeProdutos.cs" />
-    <Compile Include="Plugins\VerificaDuplicidadeDeOportunidade.cs" />
+    <Compile Include="Plugins\ProductIntegration.cs" />
+    <Compile Include="Plugins\OpportunityUniqueIdentifierManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Grupo5.snk" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

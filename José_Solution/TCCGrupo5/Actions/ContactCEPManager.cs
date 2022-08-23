@@ -5,7 +5,7 @@ using System.Activities;
 
 namespace TCCGrupo5.Actions
 {
-    public class RecuperandoCepDoFormulario : ActionImplement
+    public class ContactCEPManager : ActionImplement
     {
         [Input("CEP")]
         public InArgument<string> CEP { get; set; }
@@ -30,42 +30,42 @@ namespace TCCGrupo5.Actions
         {
             string cep = CEP.Get(context);
 
-            InformacoesDoCep informacoesDoCep = InvocandoGet(cep);
+            CEP Cep = GetCEP(cep);
 
-            string logradouro = informacoesDoCep.Logradouro;
+            string logradouro = Cep.Logradouro;
             Logradouro.Set(context, logradouro);
 
-            string complemento = informacoesDoCep.Complemento;
+            string complemento = Cep.Complemento;
             Complemento.Set(context, complemento);
 
-            string bairro = informacoesDoCep.Bairro;
+            string bairro = Cep.Bairro;
             Bairro.Set(context, bairro);
 
-            string localidade = informacoesDoCep.Localidade;
+            string localidade = Cep.Localidade;
             Localidade.Set(context, localidade);
 
-            string uf = informacoesDoCep.UF;
+            string uf = Cep.UF;
             UF.Set(context, uf);
 
-            string codigoIBGE = informacoesDoCep.IBGE;
+            string codigoIBGE = Cep.IBGE;
             CodigoIBGE.Set(context, codigoIBGE);
 
-            string ddd = informacoesDoCep.DDD;
+            string ddd = Cep.DDD;
             DDD.Set(context, ddd);
 
             Sucesso.Set(context, true);
         }
 
-        private static InformacoesDoCep InvocandoGet(string cep)
+        private static CEP GetCEP(string cep)
         {
-            var client = new RestClient($"https://viacep.com.br/ws/{cep}/json/");
+            RestClient client = new RestClient("https://viacep.com.br/ws/" + cep + "/json/");
             RestRequest request = new RestRequest("", Method.Get);
-            var response = client.Execute(request);
+            RestResponse response = client.Execute(request);
 
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                InformacoesDoCep informacoesDoCep = JsonConvert.DeserializeObject<InformacoesDoCep>(response.Content);
-                return informacoesDoCep;
+                CEP Cep = JsonConvert.DeserializeObject<CEP>(response.Content);
+                return Cep;
             }
             else
             {

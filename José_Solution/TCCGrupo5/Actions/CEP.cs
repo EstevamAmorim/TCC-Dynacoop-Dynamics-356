@@ -1,6 +1,6 @@
 ﻿namespace TCCGrupo5.Actions
 {
-    public class InformacoesDoCep
+    public class CEP
     {
         public string Cep { get; set; }
         public string Logradouro { get; set; }

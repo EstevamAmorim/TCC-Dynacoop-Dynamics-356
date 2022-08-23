@@ -7,13 +7,13 @@ TCC.Account = {
         var nome = formContext.getAttribute("name").getValue();
 
         if (nome != null) {
-            var nomeFormatado = TCC.Account.FormatarNome(nome)
+            var nomeFormatado = TCC.Account.FormatName(nome)
             formContext.getAttribute("name").setValue(nomeFormatado)
         } else {
-            TCC.Account.DynamicsAlert("Por favor digite um nome.", "Campo nome em branco!")
+            TCC.Account.DynamicsAlert("Please enter a Name in this field.", "Blank Account Name!")
         }
     },
-    FormatarNome: function (nome) {
+    FormatName: function (nome) {
         nome = nome.toLowerCase()
         var arrayNome = nome.split(" ")
 
@@ -23,23 +23,23 @@ TCC.Account = {
         var ArraynomeFormatado = arrayNome.join(" ")
         return ArraynomeFormatado
     },
-    ValidarCNPJ: function (executionContext) {
+    CNPJOnChange: function (executionContext) {
         var formContext = executionContext.getFormContext();
         var cnpj = formContext.getAttribute("tcc_cnpj").getValue();
         if(cnpj != null){
-            if(TCC.Account.ValidadorDeCNPJ(cnpj)){
+            if(TCC.Account.ValidadeCNPJ(cnpj)){
                 var cnpjFormatado = cnpj.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
                 formContext.getAttribute("tcc_cnpj").setValue(cnpjFormatado);
             }
             else{
-                TCC.Account.DynamicsAlert("Por favor digite um CNPJ válido.","CNPJ inválido!")
+                TCC.Account.DynamicsAlert("Enter a valid CNPJ in this field and try again.","Invalid CNPJ!");
                 formContext.getAttribute("tcc_cnpj").setValue("");
             }
         }else{
-            TCC.Account.DynamicsAlert("Por favor digite um CNPJ neste campo.","Campo CNPJ vazio!")
+            TCC.Account.DynamicsAlert("Please enter a CNPJ in this field.", "Blank CNPJ!")
         }
     },
-    ValidadorDeCNPJ: function(cnpj) {
+    ValidadeCNPJ: function(cnpj) {
         cnpj = cnpj.replace(/[^\d]+/g,'');
  
     if(cnpj == '') return false;

@@ -20,7 +20,7 @@ TCC.Contact = {
                     };
                 }
             };
-            
+
             Xrm.WebApi.online.execute(execute_new_PreecherEnderecoCompletoComCep_Request).then(
                 function success(response) {
                     if (response.ok) { return response.json(); }
@@ -35,12 +35,12 @@ TCC.Contact = {
                 var uf = result["UF"]; 
                 var codigoibge = result["CodigoIBGE"]; 
                 var ddd = result["DDD"]; 
-                TCC.Contact.PreencherFormulario(formContext, logradouro, complemento, bairro, localidade, uf, codigoibge, ddd) 
+                TCC.Contact.FillOutForm(formContext, logradouro, complemento, bairro, localidade, uf, codigoibge, ddd) 
             }).catch(function (error) {
-                TCC.Contact.DynamicsAlert("Digite um CEP válido e tente novamente.","CEP inválido!");
+                TCC.Contact.DynamicsAlert("Enter a valid CEP in this field and try again.","Invalid CEP!");
             });
         }else{
-            TCC.Contact.DynamicsAlert("Por favor digite um CEP.", "Campo CEP em branco")
+            TCC.Contact.DynamicsAlert("Please enter a CEP in this field.", "Blank CEP!")
         }
 
     },
@@ -49,18 +49,18 @@ TCC.Contact = {
         var cpf = formContext.getAttribute("tcc_cpf").getValue();
 
         if(cpf != null){
-            if(TCC.Contact.ValidarCPF(cpf)){
+            if(TCC.Contact.ValidateCPF(cpf)){
                 var cpfFormatado = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, '$1.$2.$3-$4');
                 formContext.getAttribute("tcc_cpf").setValue(cpfFormatado);
             }else{
-                TCC.Contact.DynamicsAlert("Digite um CPF válido neste campo!","CPF inválido")    
+                TCC.Contact.DynamicsAlert("Enter a valid CPF in this field and try again.","Invalid CPF!")    
                 formContext.getAttribute("tcc_cpf").setValue("");
             }
         }else{
-            TCC.Contact.DynamicsAlert("Digite um CPF neste campo!","Campo CPF em branco")
+            TCC.Contact.DynamicsAlert("Please enter a CPF in this field.","Blank CPF!")
         }
     },
-    ValidarCPF: function(cpf){
+    ValidateCPF: function(cpf){
         cpf = cpf.replace(/[^\d]+/g,'');	
 	    if(cpf == '') return false;	
 	    // Elimina CPFs invalidos conhecidos	
@@ -96,7 +96,7 @@ TCC.Contact = {
             return false;		
         return true;   
     },
-    PreencherFormulario: function(formContext, logradouro, complemento, bairro, localidade, uf, codigoibge, ddd){
+    FillOutForm: function(formContext, logradouro, complemento, bairro, localidade, uf, codigoibge, ddd){
         formContext.getAttribute("address1_line1").setValue(logradouro);
         formContext.getAttribute("address1_line2").setValue(complemento);
         formContext.getAttribute("address1_line3").setValue(bairro);
