@@ -2,6 +2,7 @@ if (typeof (TCC) == "undefined") { TCC = {} }
 if (typeof (TCC.Account) == "undefined") { TCC.Account = {} }
 
 TCC.Account = {
+<<<<<<< HEAD
     NameOnChange: function (executionContext) {
         var formContext = executionContext.getFormContext();
         var nome = formContext.getAttribute("name").getValue();
@@ -18,12 +19,35 @@ TCC.Account = {
         var arrayNome = nome.split(" ")
 
         for (var i = 0; i < arrayNome.length; i++) {
+=======
+    NameOnChange: function(executionContext){
+        var formContext = executionContext.getFormContext();
+        var nome = formContext.getAttribute("name").getValue();
+        
+        if(nome != null){
+            var nomeFormatado = TCC.Account.FormatarNome(nome)
+            formContext.getAttribute("name").setValue(nomeFormatado)
+        }else
+        {
+            TCC.Account.DynamicsAlert("Por favor digite um nome.","Campo nome em branco!")
+        }
+    },
+    FormatarNome: function(nome){
+        nome = nome.toLowerCase()
+        var arrayNome = nome.split(" ")
+
+        for(var i = 0; i < arrayNome.length; i++){
+>>>>>>> 907c6acd9a18352077e6d11a7d46e9eeb1a915ed
             arrayNome[i] = arrayNome[i][0].toUpperCase() + arrayNome[i].substring(1)
         }
         var ArraynomeFormatado = arrayNome.join(" ")
         return ArraynomeFormatado
     },
+<<<<<<< HEAD
     CNPJOnChange: function (executionContext) {
+=======
+    ValidarCNPJ: function (executionContext) {
+>>>>>>> 907c6acd9a18352077e6d11a7d46e9eeb1a915ed
         var formContext = executionContext.getFormContext();
         var cnpj = formContext.getAttribute("tcc_cnpj").getValue();
         if(cnpj != null){
